@@ -24,8 +24,6 @@ const resetForm = (): void => {
 </script>
 
 <main>
-{bothAreOfAge}, {step}
-
 	{#if step === 0}
 		<TransitionContainer>
 			<h1>
@@ -43,9 +41,7 @@ const resetForm = (): void => {
 				</button>
 			</div>
 		</TransitionContainer>
-	{/if}
-
-	{#if step === 1}
+	{:else if step === 1}
 		<StepOne bind:bothAreOfAge {goToStep} />
 	{:else if endAfterStepOne}
 		<NotBothAdultsEnding {resetForm} />

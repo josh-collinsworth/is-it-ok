@@ -1,24 +1,25 @@
 <script type="ts">
   import TransitionContainer from '../TransitionContainer.svelte'
 
-  export let hasRequested: boolean
+  export let hasRequested: number
+  export let step: number
   export let goToStep: (step: number) => void
 </script>
 
 <TransitionContainer>
   <form on:submit|preventDefault>
     <fieldset>
-      <legend>2.) Has the recipient specifically <em>asked</em> you for a picture of your dick?<sup>*</sup></legend>
+      <legend>{step}.) Has the recipient specifically <em>asked</em> you for a picture of your dick?<sup>*</sup></legend>
 
       <div class="choices">
         <div class="wrapper">
-          <input bind:group={hasRequested} class="sr" type="radio" id="yes" name="has-requested-dick-pic" value={true}>
+          <input bind:group={hasRequested} class="sr" type="radio" id="yes" name="has-requested-dick-pic" value={1}>
           <label for="yes">
             <strong>Yes</strong>
           </label>
         </div>
         <div class="wrapper">
-          <input bind:group={hasRequested} class="sr" type="radio" id="no" name="has-requested-dick-pic" value={false}>
+          <input bind:group={hasRequested} class="sr" type="radio" id="no" name="has-requested-dick-pic" value={0}>
           <label for="no">
             <strong>No</strong>
           </label>
@@ -26,11 +27,15 @@
       </fieldset>
 
       <div>
+        <button on:click={() => goToStep(1)}>
+          &lsaquo; Back
+        </button>
+
         <button
           disabled={typeof hasRequested === 'undefined'}
           on:click={() => goToStep(3)}
         >
-          Next
+          Next &rsaquo;
         </button>
       </div>
 

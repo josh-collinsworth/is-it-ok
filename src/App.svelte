@@ -1,17 +1,26 @@
 <script lang="ts">
+import Intro from './components/Intro.svelte'
+import StepOne from './components/steps/StepOne.svelte'
+import StepTwo from './components/steps/StepTwo.svelte'
+import StepThree from './components/steps/StepThree.svelte';
+import StepFour from './components/steps/StepFour.svelte';
+
 import NotBothAdultsEnding from './components/endings/NotBothAdultsEnding.svelte'
 import DidNotAskEnding from './components/endings/DidNotAskEnding.svelte'
-import StepOne from './components/steps/StepOne.svelte'
-import StepThree from './components/steps/StepThree.svelte';
-import StepTwo from './components/steps/StepTwo.svelte'
+import AreNotEqualsEnding from './components/endings/AreNotEqualsEnding.svelte'
+
 import TransitionContainer from './components/TransitionContainer.svelte'
 
 let step: number = 0
-let bothAreOfAge: boolean
-let hasRequested: boolean
-let hasReallyRequested: boolean
-$: endAfterStepOne = bothAreOfAge !== true && step > 1
-$: endAfterStepTwoOrThree = (hasRequested !== true || hasRequested !== true) && step > 2
+let bothAreOfAge: number
+let hasRequested: number
+let hasReallyRequested: number
+let hasNoOtherMotives: number
+
+$: endAfterStepOne = bothAreOfAge === 0 && step > 1
+$: endAfterStepTwo = hasRequested === 0 && step > 2
+$: endAfterStepThree = hasReallyRequested === 0 && step > 3
+$: endAfterStepFour = hasNoOtherMotives === 1 && step > 4
 
 const goToStep = (nextStep: number): void => {
 	step = nextStep
@@ -19,38 +28,32 @@ const goToStep = (nextStep: number): void => {
 
 const resetForm = (): void => {
 	step = 0
+	bothAreOfAge = undefined
 	hasRequested = undefined
+	hasReallyRequested = undefined
+	hasNoOtherMotives = undefined
 }
 </script>
 
 <main>
 	{#if step === 0}
-		<TransitionContainer>
-			<h1>
-				<span aria-hidden="true">🍆 📸</span>
-				Should I send a&nbsp;dick&nbsp;pic?
-			</h1>
-
-			<p>Considering sending a dick pic, but not sure whether it's ok?</p>
-
-			<p><b>You’re in the right place!</b></p>
-
-			<div>
-				<button on:click={() => goToStep(1)} disabled={step !== 0}>
-					Click here to take the survey
-				</button>
-			</div>
-		</TransitionContainer>
+		<Intro {goToStep} />
 	{:else if step === 1}
-		<StepOne bind:bothAreOfAge {goToStep} />
+		<StepOne bind:bothAreOfAge {goToStep} {step} />
 	{:else if endAfterStepOne}
 		<NotBothAdultsEnding {resetForm} />
 	{:else if step === 2}
-		<StepTwo bind:hasRequested {goToStep} />
-	{:else if endAfterStepTwoOrThree}
+		<StepTwo bind:hasRequested {goToStep} {step} />
+	{:else if endAfterStepTwo}
 		<DidNotAskEnding {resetForm} />
 	{:else if step === 3}
-		<StepThree bind:hasReallyRequested {goToStep} />
+		<StepThree bind:hasReallyRequested {goToStep} {step} />
+	{:else if endAfterStepThree}
+		<DidNotAskEnding {resetForm} />
+	{:else if step === 4}
+		<StepFour bind:hasNoOtherMotives {goToStep} {step} />
+	{:else if endAfterStepFour}
+		<AreNotEqualsEnding {resetForm} />
 	{:else}
 		<TransitionContainer>
 			{#if hasRequested}

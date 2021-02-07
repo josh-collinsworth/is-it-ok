@@ -7,8 +7,8 @@
 
 <div
   class="container"
-  in:fly={{ y: 30, duration, delay: duration, easing: quadOut }}
-  out:fly={{ y: -30, duration, easing: quadIn }}
+  in:fly={{ y: 24, duration, delay: duration, easing: quadOut }}
+  out:fly={{ y: -24, duration, easing: quadIn }}
 >
   <slot />
 </div>

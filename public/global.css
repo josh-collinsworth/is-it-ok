@@ -12,6 +12,12 @@
 	font-size: 1.25rem;
 }
 
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
 @media (min-width: 30rem) {
 	:root {
 		font-size: 1.4rem;
@@ -27,19 +33,48 @@
 body {
 	color: #333;
 	margin: 0;
-	padding: 8px;
 	box-sizing: border-box;
 	font-family: Lora, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
+}
+
+body,
+main,
+form,
+.container {
+	min-height: 100vh;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	align-content: center;
+}
+
+main {
+	padding: 1rem;
+	width: 100%;
+	margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6, p, div {
+	width: 100%;
+}
+
+@media (min-width: 640px) {
+	main {
+		max-width: 38rem;
+	}
 }
 
 h1 {
+	color: var(--darkBlue);
+	font-weight: bold;
 	font-size: 3rem;
 	line-height: 1;
+	margin-top: 0;
 }
 
-h1 span {
-	display: block;
-	margin-top: .5em;
+form {
+	margin: 2rem 0;
 }
 
 @media (min-width: 40rem) {
@@ -48,9 +83,17 @@ h1 span {
 	}
 }
 
-a {
-	color: rgb(0,100,200);
-	text-decoration: none;
+h1 span {
+	display: block;
+	margin-bottom: .5em;
+}
+
+h2 {
+	font-size: 3rem;
+}
+
+p {
+	margin: 0 0 1em 0;
 }
 
 a:hover {
@@ -65,9 +108,9 @@ input, button, select, textarea {
 	font-family: inherit;
 	font-size: inherit;
 	-webkit-padding: 0.4em 0;
-	padding: 0.4em 0.8em;
+	padding: 0.5rem 1rem;
 	box-sizing: border-box;
-	border: 1px solid #ccc;
+	border: none;
 	border-radius: 2px;
 }
 
@@ -81,13 +124,13 @@ button {
 	background-color: var(--darkBlue);
 	outline: none;
 	font-weight: bold;
-	border: .2em solid;
-	font-size: 1.25rem;
-	margin-top: 1.5rem;
+	font-size: 1rem;
+	margin-top: 2rem;
+	border-radius: 0.2rem;
 }
 
 button:disabled {
-	color: #999;
+	background-color: #bbb;
 }
 
 button:not(:disabled):active {
@@ -103,17 +146,63 @@ fieldset {
 	border: none;
 }
 
+.wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	margin: 1rem 0 0;
+}
+
 legend {
 	margin-bottom: 1rem;
 }
 
 label {
-	font-weight: bold;
 	line-height: 1.5;
+	font-size: 0.8rem;
+	align-items: baseline;
+}
+
+label strong {
+	font-size: 1rem;
 }
 
 .sr {
 	opacity: 0;
 	position: absolute;
 	overflow: hidden;
+}
+
+input[type=radio] + label {
+	line-height: 1;
+	display: inherit;
+	flex-wrap: inherit;
+	align-items: baseline;
+}
+
+input[type=radio] + label:before {
+	width: 1rem;
+	height: 1rem;
+	border-radius: 1rem;
+	border: .1rem solid;
+	content: '';
+	display: inline-block;
+	margin: 0 .5rem 0 0;
+	position: relative;
+	top: .15rem;
+}
+
+input[type=radio]:checked + label:before {
+	box-shadow: inset 0 0 0 .1rem #fff, inset 0 0 0 .5rem var(--darkBlue);
+}
+
+sup {
+	font-size: 0.65rem;
+	line-height: 1;
+}
+
+aside.footnotes {
+	margin-top: 4rem;
+	font-size: 0.7rem;
+	line-height: 1.5;
 }

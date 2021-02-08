@@ -10,7 +10,7 @@
   <form on:submit|preventDefault>
     <fieldset>
 
-      <legend>{step}.) Are you in a position of power over the recipient, or could they potentially be under the impression this transaction will get them something?<sup>*</sup></legend>
+      <legend>{step}.) ...Wow. Ok. Well then. Are you in any position of power or authority over the recipient, or could they potentially be under the impression this transaction will get them something?<sup>*</sup></legend>
 
       <div class="choices">
         <div class="wrapper">

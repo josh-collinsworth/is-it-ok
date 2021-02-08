@@ -5,11 +5,11 @@
 </script>
 
 <TransitionContainer>
-  <h2><span>🛑</span> Don't do it.</h2>
+  <h2><span>🛑</span> Don't&nbsp;do&nbsp;it.</h2>
 
-  <p>If they did not specifically, in no uncertain terms ask for it, <em>never</em> send a dick pic.</p>
+  <p>Unless they specifically asked in no uncertain terms, it's <em>never</em> ok to send a dick pic.</p>
 
-  <p>If you're not 100% sure they want one, you can at least ask. (But maybe just assume they don't, because there's no going back from that question.)</p>
+  <p>If you're not 100% sure, you can at least ask first. (<i>But maybe just assume they don't, because there's no going back from that question</i>.)</p>
 
 
   <button on:click={resetForm}>Take again</button>

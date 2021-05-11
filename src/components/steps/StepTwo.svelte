@@ -27,7 +27,7 @@
       </fieldset>
 
       <div>
-        <button on:click={() => goToStep(1)}>
+        <button type="button" on:click={() => goToStep(1)}>
           &lsaquo; Back
         </button>
 

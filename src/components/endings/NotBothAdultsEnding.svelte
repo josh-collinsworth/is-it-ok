@@ -9,7 +9,7 @@
 
   <p>Dude. What the <em>fuck</em>?</p>
 
-  <p>We don't even need to ask any more questions. 100% not ok, ever.</p>
+  <p>No more questions. 100% not ok, ever.</p>
 
   <button on:click={resetForm}>Take again</button>
 </TransitionContainer>

@@ -41,7 +41,7 @@
 
       <aside class="footnotes">
         <p>
-          *<i>In the legal sense, at least; not necessarily the maturity sense.</i>
+          *<i>In the legal sense, that is; not necessarily the maturity sense.</i>
         </p>
       </aside>
   </form>
